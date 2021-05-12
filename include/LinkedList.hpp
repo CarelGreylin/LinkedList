@@ -10,6 +10,11 @@
 #include <cstdint>
 #include <memory>
 
+struct node {
+  int32_t data;
+  std::unique_ptr<struct node> next;
+};
+
 typedef struct node Node;
 
 class LinkedList {
@@ -53,9 +58,4 @@ class LinkedList {
     Node mHead;
     Node mTail;
     int mLength;
-};
-
-struct node {
-  int32_t data;
-  std::unique_ptr<Node> next;
 };
