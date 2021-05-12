@@ -3,7 +3,7 @@
  * The list can only hold 32-bit integers.
  * Some basic methods have been implemented.
  * 
- * Author: Carel Greyling 2021
+ * Author: Carel Greyling, 2021
  */
 #pragma once
 
@@ -16,9 +16,9 @@ class LinkedList {
   public:
     LinkedList();
 
-    // Adds the @element to the start of the LinkedList.
+    // Adds the element to the start of the LinkedList.
     void addFirst(const int32_t element);
-    // Adds the @element to the end of the LinkedList.
+    // Adds the element to the end of the LinkedList.
     void addLast(const int32_t element);
 
     // Remove the first element from the LinkedList.
@@ -30,13 +30,6 @@ class LinkedList {
     // Raises: std::range_error when the list is empty.
     int32_t removeLast();
 
-    // Returns the first element in the LinkedList.
-    // Returns NULL if the LinkedList is empty.
-    auto getFirst() const;
-    // Returns the last element in the LinkedList.
-    // Returns NULL if the LinkedList is empty.
-    auto getLast() const;
-
     // Prints the LinkedList to standard output.
     // Prints in the format: 1 -> 5 -> 6 -> 8 \n
     void showList() const;
@@ -45,9 +38,21 @@ class LinkedList {
     // Does not copy the list but modifies it statically.
     void reverse();
 
+    ///////////////////// Getters ///////////////////////
+
+    // Returns the first element in the LinkedList.
+    // Returns NULL if the LinkedList is empty.
+    int32_t getFirst() const;
+    // Returns the last element in the LinkedList.
+    // Returns NULL if the LinkedList is empty.
+    int32_t getLast() const;
+
+    int getLength() const;
+
   private:
     Node mHead;
     Node mTail;
+    int mLength;
 };
 
 struct node {

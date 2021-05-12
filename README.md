@@ -18,8 +18,8 @@ l = LinkedList();
 ## Required Features
 Function | Returns | Raises
 --- | --- | ---
-`l.addFirst(e)`<br>Adds the element `e` to the front of list `l`.  | `void` | `std::invalid_argument` when `e` is not an integer.
-`l.addLast(e)`<br>Adds the element `e` to the end of list `l`.  | `void` | `std::invalid_argument` when `e` is not an integer.
+`l.addFirst(e)`<br>Adds the element `e` to the front of list `l`.  | `void` | None.
+`l.addLast(e)`<br>Adds the element `e` to the end of list `l`.  | `void` | None.
 `l.removeFirst()`<br>Removes element `e` from the start of the list `l`.  | `int` element `e` | `std::range_error` when `l` is empty.
 `l.removeLast()`<br>Removes element `e` from the end of the list `l`.  | `int` element `e` | `std::range_error` when `l` is empty.
 `l.getFirst()`<br>Returns the first element `e` from the list `l`.  | `int` element `e` or `NULL` if `l` is empty. | None.
