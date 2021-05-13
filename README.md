@@ -30,6 +30,7 @@ Function | Returns | Raises
 Function | Returns | Raises
 --- | --- | ---
 `l.reverse()`<br>Modifies the list `l` to reverse it's order.  | `void` | None
+`l.getLength()`<br>Returns the length of the list `l`. | `int` | None
 
 # Assumptions
 

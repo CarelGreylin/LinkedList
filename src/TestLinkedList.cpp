@@ -97,12 +97,11 @@ TEST_CASE("Simple removeLast test.") {
   // Check that all class members are modified correctly and that
   // removeLast returns the right value.
   REQUIRE(l.removeLast() == length - 1);
-  REQUIRE(l.getLength() == length - 1);
   REQUIRE(l.getLast() == length - 2);
-
+  REQUIRE(l.getLength() == length - 1);
   // Remove all elements.
   for (int i = 0; i < length - 1; i++) {
-    l.removeLast();
+    REQUIRE(l.removeLast() == length - i - 2);
   }
 
   REQUIRE(l.getLength() == 0);
@@ -129,22 +128,22 @@ TEST_CASE("Test showList standard output format.") {
   
   // Test empty case
   l.showList();
-  CHECK(buffer.str() == "\n");
-  buffer.clear();
+  CHECK(buffer.str() == "");
+  buffer.str(""); // Reset the buffer.
 
   // Test one long
   l.addLast(1);
   l.showList();
-  CHECK(buffer.str() == "1\n");
-  buffer.clear();
+  CHECK(buffer.str() == "1");
+  buffer.str("");
 
   // Test generic case
   for (int i = 2; i <= 5; i++) {
     l.addLast(i);
   }
   l.showList();
-  CHECK(buffer.str() == "1 -> 2 -> 3 -> 4 -> 5\n");
-  buffer.clear();
+  CHECK(buffer.str() == "1 -> 2 -> 3 -> 4 -> 5");
+  buffer.str("");
 
   // Reset the stream buffer pointer for standard output.
   std::cout.rdbuf(old);
@@ -181,12 +180,12 @@ TEST_CASE("Test reverse.") {
   }
 
   l.showList();
-  CHECK(buffer.str() == "5 -> 4 -> 3 -> 2 -> 1\n");
-  buffer.clear();
+  CHECK(buffer.str() == "5 -> 4 -> 3 -> 2 -> 1");
+  buffer.str("");
 
   l.reverse();
   l.showList();
-  CHECK(buffer.str() == "1 -> 2 -> 3 -> 4 -> 5\n");
+  CHECK(buffer.str() == "1 -> 2 -> 3 -> 4 -> 5");
 
   // Reset the stream buffer pointer for standard output.
   std::cout.rdbuf(old);

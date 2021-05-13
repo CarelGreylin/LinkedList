@@ -9,13 +9,24 @@
 
 #include <cstdint>
 #include <memory>
+#include <stdexcept>
+#include <iostream>
 
-struct node {
-  int32_t data;
-  std::unique_ptr<struct node> next;
+class Node {
+  public:
+    Node(const int32_t data)
+    : mData{data}, mNext{NULL} {};
+
+    void setData(const int32_t data) { mData = data; }
+    void setNext(const std::shared_ptr<Node> next) { mNext = next; }
+
+    int32_t getData() const { return mData; }
+    std::shared_ptr<Node> getNext() const { return mNext; }
+  private:
+    int32_t mData;
+    std::shared_ptr<Node> mNext;
 };
 
-typedef struct node Node;
 
 class LinkedList {
   public:
@@ -55,7 +66,7 @@ class LinkedList {
     int getLength() const;
 
   private:
-    Node mHead;
-    Node mTail;
+    std::shared_ptr<Node> mHead;
+    std::shared_ptr<Node> mTail;
     int mLength;
 };
