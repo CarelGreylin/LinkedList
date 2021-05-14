@@ -34,7 +34,7 @@ void LinkedList::addLast(const int32_t element) {
 
 int32_t LinkedList::removeFirst() {
   nullCheck();
-  
+
   auto oldNode = mHead;
   mHead = oldNode->getNext();
   mLength--;

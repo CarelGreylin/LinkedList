@@ -2,6 +2,7 @@
 * Linked list implementation using C++ for the 2021 Startmate engineering task.
 * Catch2 is used as a testing suite.
 * The linked list is implemented using object oriented programming. All required features are implemented as methods of a class.
+* Smart pointers are used to link the list and automate memory management.
 
 # Instructions For Use
 
@@ -9,7 +10,18 @@ To run the tests simply run:
 ```
 sh RunTests.sh
 ```
-in a Linux terminal
+in a Linux terminal. It may take a while to run. This is because of the Catch2 testing suite being very slow not my code :)
+
+On Windows, run:
+```
+g++ src/TestLinkedList.cpp src/LinkedList.cpp -o tests.exe
+```
+from the root directory. Finally run the executable generated with:
+```
+./tests.exe
+```
+
+Feel free to test the code using any other methods.
 # Features
 Given:
 ```
