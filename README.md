@@ -22,8 +22,8 @@ Function | Returns | Raises
 `l.addLast(e)`<br>Adds the element `e` to the end of list `l`.  | `void` | None.
 `l.removeFirst()`<br>Removes element `e` from the start of the list `l`.  | `int` element `e` | `std::range_error` when `l` is empty.
 `l.removeLast()`<br>Removes element `e` from the end of the list `l`.  | `int` element `e` | `std::range_error` when `l` is empty.
-`l.getFirst()`<br>Returns the first element `e` from the list `l`.  | `int` element `e` or `NULL` if `l` is empty. | None.
-`l.getLast()`<br>Returns the last element `e` from the list `l`.  | `int` element `e` or `NULL` if `l` is empty. | None.
+`l.getFirst()`<br>Returns the first element `e` from the list `l`.  | `int` element `e`. | `std::range_error` when `l` is empty.
+`l.getLast()`<br>Returns the last element `e` from the list `l`.  | `int` element `e`. | `std::range_error` when `l` is empty.
 `l.showList()`<br>Prints the list `l` to standard output in the format: **1 -> 5 -> 6 -> 8**  | `void` | None.
 
 ## Additional Features

@@ -113,8 +113,8 @@ TEST_CASE("Simple removeLast test.") {
 TEST_CASE("getFirst and getLast NULL test.") {
   LinkedList l;
 
-  CHECK(l.getFirst() == NULL);
-  CHECK(l.getLast() == NULL);
+  REQUIRE_THROWS_AS(l.getFirst(), std::range_error);
+  REQUIRE_THROWS_AS(l.getLast(), std::range_error);
 }
 
 TEST_CASE("Test showList standard output format.") {

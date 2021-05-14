@@ -69,4 +69,7 @@ class LinkedList {
     std::shared_ptr<Node> mHead;
     std::shared_ptr<Node> mTail;
     int mLength;
+
+    // Throws a std::range_error when the list is empty.
+    void nullCheck() const;
 };

@@ -33,9 +33,8 @@ void LinkedList::addLast(const int32_t element) {
 }
 
 int32_t LinkedList::removeFirst() {
-  if (mLength == 0) {
-    throw std::range_error("The list is empty.");
-  }
+  nullCheck();
+  
   auto oldNode = mHead;
   mHead = oldNode->getNext();
   mLength--;
@@ -44,9 +43,7 @@ int32_t LinkedList::removeFirst() {
 
 int32_t LinkedList::removeLast() {
   // Error checking
-  if (mLength == 0) {
-    throw std::range_error("The list is empty.");
-  }
+  nullCheck();
   mLength--;
 
   // Find the new tail
@@ -96,19 +93,21 @@ void LinkedList::reverse() {
 }
 
 int32_t LinkedList::getFirst() const {
-  if (mLength == 0) {
-    return NULL;
-  }
+  nullCheck();
+
   return mHead->getData();
 }
 
 int32_t LinkedList::getLast() const {
-  if (mLength == 0) {
-    return NULL;
-  }
+  nullCheck();
+
   return mTail->getData();
 }
 
 int LinkedList::getLength() const {
   return mLength;
+}
+
+void LinkedList::nullCheck() const {
+  if (mLength < 1) { throw std::range_error("The list is empty."); }
 }
