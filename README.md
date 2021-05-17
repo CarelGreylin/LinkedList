@@ -6,13 +6,13 @@
 
 # Instructions For Use
 
-To run the tests simply run:
+**On Linux run:**
 ```
 sh RunTests.sh
 ```
-in a Linux terminal. It may take a while to run. This is because of the Catch2 testing suite being very slow not my code :)
+It may take a while to run. This is because of the Catch2 testing suite being very slow to compile not my code :)
 
-On Windows, run:
+**On Windows, run:**
 ```
 g++ src/TestLinkedList.cpp src/LinkedList.cpp -o tests.exe
 ```
@@ -22,9 +22,34 @@ from the root directory. Finally run the executable generated with:
 ```
 
 Feel free to test the code using any other methods.
+
+**Having trouble?**
+
+If you are getting tons of errors when running the above commands, it's likely that your g++ is outdated and not compatible with `<cstdint>`. Update it by running the following commands:
+```
+$ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+$ sudo apt-get update
+$ sudo apt-get install gcc-8 g++-8
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 20 --slave /usr/bin/g++ g++ /usr/bin/g++-6
+```
+
+You can check that you have version 8 installed correctly by running:
+```
+$ g++ --version
+```
+Try running the tests again.
+
+**If you are still having issues** and you have been trying to use the script just run the commands in the script individually:
+
+```
+$ g++ src/TestLinkedList.cpp src/LinkedList.cpp -o tests.exe
+$ ./tests.exe
+$ rm tests.exe
+```
+
 # Features
 Given:
-```
+```C++
 l = LinkedList();
 ```
 ## Required Features
