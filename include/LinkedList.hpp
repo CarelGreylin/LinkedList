@@ -12,6 +12,7 @@
 #include <stdexcept>
 #include <iostream>
 
+// Simple Node class to use inside of the LinkedList class.
 class Node {
   public:
     Node(const int32_t data)
@@ -30,7 +31,11 @@ class Node {
 
 class LinkedList {
   public:
+    // Default Constructor.
     LinkedList();
+
+    // Constructor for copying another LinkedList.
+    LinkedList(const LinkedList &list);
 
     // Adds the element to the start of the LinkedList.
     void addFirst(const int32_t element);
@@ -64,6 +69,12 @@ class LinkedList {
     int32_t getLast() const;
 
     int getLength() const;
+
+    //////////////////// Operators /////////////////////
+
+    // Opperator for getting the value of the data in index i of the
+    // LinkedList.
+    int32_t operator[](const int i) const;
 
   private:
     std::shared_ptr<Node> mHead;

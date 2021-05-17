@@ -41,6 +41,8 @@ Function | Returns | Raises
 ## Additional Features
 Function | Returns | Raises
 --- | --- | ---
+`LinkedList listCopy{l}` <br>Constructor for a LinkedList that copies the list `l`. | `LinkedList` | None
+`l[index]` <br>Gets the element `e` at the position `index` in the LinkedList. | `int e` | `std::range_error` when the `index` is out of bounds.
 `l.reverse()`<br>Modifies the list `l` to reverse it's order.  | `void` | None
 `l.getLength()`<br>Returns the length of the list `l`. | `int` | None
 

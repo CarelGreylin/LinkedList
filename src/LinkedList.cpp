@@ -6,6 +6,15 @@ LinkedList::LinkedList() {
   mTail = nullptr;
 }
 
+LinkedList::LinkedList(const LinkedList &list) {
+  mLength = 0;
+  mHead = nullptr;
+  mTail = nullptr;
+  for (int i = 0; i < list.getLength(); i++) {
+    addLast(list[i]);
+  }
+}
+
 void LinkedList::addFirst(const int32_t element) {
   const std::shared_ptr<Node> newNode{new Node{element}};
   
@@ -106,6 +115,20 @@ int32_t LinkedList::getLast() const {
 
 int LinkedList::getLength() const {
   return mLength;
+}
+
+int32_t LinkedList::operator[](const int i) const {
+  if (mLength <= i) {
+    throw std::range_error("List index out of range.");
+  }
+  auto current {mHead};
+  int counter {0};
+  while (counter != i) {
+    current = current->getNext();
+    counter++;
+  }
+
+  return current->getData();
 }
 
 void LinkedList::nullCheck() const {

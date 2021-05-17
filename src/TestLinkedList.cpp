@@ -16,6 +16,7 @@
 #include "../include/catch.hpp"
 
 TEST_CASE("Simple addFirst test.") {
+  std::cout << "Testing addFirst..." << std::endl;
   LinkedList l;
   
   int32_t e {8};
@@ -39,6 +40,7 @@ TEST_CASE("Simple addFirst test.") {
 }
 
 TEST_CASE("Simple addLast test.") {
+  std::cout << "Testing addLast..." << std::endl;
   LinkedList l;
   
   int32_t e{8};
@@ -62,6 +64,7 @@ TEST_CASE("Simple addLast test.") {
 }
 
 TEST_CASE("Simple removeFirst test.") {
+  std::cout << "Testing removeFirst..." << std::endl;
   LinkedList l;
   int32_t length{100};
 
@@ -87,6 +90,7 @@ TEST_CASE("Simple removeFirst test.") {
 }
 
 TEST_CASE("Simple removeLast test.") {
+  std::cout << "Testing removeLast..." << std::endl;
   LinkedList l;
   int32_t length{100};
 
@@ -111,6 +115,7 @@ TEST_CASE("Simple removeLast test.") {
 }
 
 TEST_CASE("getFirst and getLast NULL test.") {
+  std::cout << "Testing getFirst and getLast..." << std::endl;
   LinkedList l;
 
   REQUIRE_THROWS_AS(l.getFirst(), std::range_error);
@@ -118,6 +123,7 @@ TEST_CASE("getFirst and getLast NULL test.") {
 }
 
 TEST_CASE("Test showList standard output format.") {
+  std::cout << "Testing showList..." << std::endl;
   // Redirect the stream buffer pointer for standard output to the stream
   // buffer pointer for the stringstream. Keep the old pointer to reset
   // the standard output pointer later.
@@ -150,6 +156,7 @@ TEST_CASE("Test showList standard output format.") {
 }
 
 TEST_CASE("Test reverse.") {
+  std::cout << "Testing reverse..." << std::endl;
   LinkedList l;
 
   // Check no exceptions are thrown on empty lists.
@@ -189,4 +196,43 @@ TEST_CASE("Test reverse.") {
 
   // Reset the stream buffer pointer for standard output.
   std::cout.rdbuf(old);
+}
+
+TEST_CASE("Test copy constructor.") {
+  std::cout << "Testing copy constructor..." << std::endl;
+  LinkedList l;
+
+  for (int i = 0; i < 10; i++) {
+    l.addLast(i);
+  }
+
+  LinkedList lCopy{l};
+
+  REQUIRE(l.getLength() == lCopy.getLength());
+
+  for (int i = 0; i < 10; i++) {
+    CHECK(l.removeLast() == lCopy.removeLast());
+  }
+
+  REQUIRE(l.getLength() == lCopy.getLength());
+
+  // Test that they are independent.
+  l.addLast(1);
+  lCopy.addLast(2);
+  REQUIRE(l.getLast() != lCopy.getLast());
+}
+
+TEST_CASE("Test get operator") {
+  std::cout << "Testing index operator..." << std::endl;
+  LinkedList l;
+
+  for (int i = 0; i < 10; i++) {
+    l.addLast(i);
+  }
+
+  for (int i = 0; i < 10; i++) {
+    CHECK(l[i] == i);
+  }
+
+  REQUIRE_THROWS_AS(l[10], std::range_error);
 }
